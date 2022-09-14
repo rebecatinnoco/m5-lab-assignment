@@ -1,72 +1,52 @@
 import './App.css';
 import { products } from './products';
-import Display  from './Display';
 import Nav  from './Nav';
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"; 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"; 
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const element = <FontAwesomeIcon icon={faShoppingCart} />
+// const  = <FontAwesomeIcon icon={faShoppingCart} />
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { productList : products}
+    this.state = { products : products,}
   }
+
+  IncrementItem = (addQty) => {
+    if(addQty.quantity < 9) {
+          const updateQty = addQty.quantity++;
+          this.setState({updateQty});
+        }
+    }
+  DecreaseItem = (minusQty) => {
+    if(minusQty.quantity > 0) {
+          const updateQty = minusQty.quantity--;
+          this.setState({updateQty});
+        }
+    }
 
 render () {
 
   return (
-    {},
-    (
       <div className="App">
-        <Nav />
-        <Display />
+        <Nav ItemCount={this.state.products}
+              cart={this.state.products}
+              IncrementItem={this.IncrementItem}
+              DecreaseItem={this.DecreaseItem} />
       </div>
-    )
   );
 }
 }
 
 export default App;
-export function add(){};
 
 
-
-// import './App.css';
-// import React, { Component } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"; 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { Products } from "./Products";
-// import Navbar from "./Navbar";
-
-
-// const element = <FontAwesomeIcon icon={faShoppingCart} />
-
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { ProductList: Products }
-//   }
-
-// render () {
-
-//   return (
-//     {},
-//     (
-//       <div className="App">
-//           <div className="App">
-//         <Navbar />
-//         <displayProducts />
-//       </div>
-//         </div>
-//     )
-//   );
-// }
-// }
-// export default App;
-
+{/* <Nav ItemCount={this.state.products
+            .map((cart) => cart.quantity)
+            .reduce((acc, curr) => acc + curr, 0)}
+              cart={this.state.products}
+              IncrementItem={this.IncrementItem}
+              DecreaseItem={this.DecreaseItem} /> */}
 
