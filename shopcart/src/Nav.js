@@ -4,54 +4,48 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Display  from './Display';
 import Cart  from './Cart';
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"; 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const element = <FontAwesomeIcon icon={faShoppingCart} />
-
-//  export default function Nav (props) {
-//     return (
-//       <Router>
-//             <nav>
-//               <Link className="App" to="/">
-//               <div className="d-flex bg-info">
-
-//               </div>
-//               </Link>
-//               <Link to="/Cart"></Link>
-//             </nav>
-//         <Routes>
-//           <Route path="/" element={<Display />} />
-//           <Route path="/showcart" element={ <Cart />}  />
-//         </Routes>
-//       </Router>
-
-//     )
-// }
-
+import { faShoppingCart, faRegistered } from "@fortawesome/free-solid-svg-icons"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Nav (props) {
+let NumItem;
+NumItem = <Todos todolists = {props.products} />
   return (
     <Router>
-          <nav>
-            <Link className="App" to="/">
-            <div className="d-flex bg-info">
-            <h1>Shop to React</h1>
-            <p className="total">{element} {".      ."} </p>
-            </div>
+          <nav className="d-flex bg-info">
+            <Link className="shop" to="/">
+            <h1>Shop 2 
+              <span>
+                <FontAwesomeIcon icon={faRegistered} />
+              </span> eact
+            </h1>
             </Link>
-            <Link to="/Cart"></Link>
+            <Link className="cart" to="/Cart">
+            <FontAwesomeIcon icon={faShoppingCart} />
+            <span>{NumItem}</span>
+            <span>Items</span>
+            </Link>
           </nav>
       <Routes>
         <Route path="/" element={<Display 
-              products={props.cart}
-              IncrementItem={props.IncrementItem}
-              DecreaseItem={props.DecreaseItem}/>} />
-        <Route path="/showcart" element={ <Cart 
-              products={props.cart}
-              IncrementItem={props.ItemCount}/>}  />
+              products={props.products}
+              handleIncrement={props.handleIncrement}
+              handleDecrease={props.handleDecrease}/>} />
+        <Route path="/Cart" element={ <Cart 
+              products={props.products}
+              IncrementItem={props.NumItem}/>}  />
       </Routes>
     </Router>
 
+  )
+}
+function Todos(props) { 
+  let t= 0;
+  t = props.todolists.map(todolists => todolists.quantity).reduce((prev, next) => prev + next)
+
+  return(
+    <div>
+      <div id="total">{t}</div>
+    </div>
   )
 }
