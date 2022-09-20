@@ -41,7 +41,10 @@ h1 {
   margin-left: 45px;;
 
 }
-.nav {
+.cart {
+  display: inline;
+  margin-left: 500px;
+  
 
 }
 .shop {
