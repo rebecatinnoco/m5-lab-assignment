@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Display  from './Display';
+import Button  from './Button';
 import Cart  from './Cart';
 import { faShoppingCart, faRegistered } from "@fortawesome/free-solid-svg-icons"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -32,6 +33,9 @@ NumItem = <Todos todolists = {props.products} />
               handleIncrement={props.handleIncrement}
               handleDecrease={props.handleDecrease}/>} />
         <Route path="/Cart" element={ <Cart 
+              products={props.products}
+              IncrementItem={props.NumItem}/>}  />
+        <Route path="/Button" element={ <Button 
               products={props.products}
               IncrementItem={props.NumItem}/>}  />
       </Routes>

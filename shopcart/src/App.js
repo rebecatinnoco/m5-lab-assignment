@@ -1,8 +1,9 @@
 import './App.css';
-import { products } from './products';
+// import { products } from './products';
 import Nav  from './Nav';
-import Display from "./Display"
-import React, { Component } from "react";
+import React, { Component, useState }from "react";
+import FacebookLogin from "react-bootstrap";
+import { Card } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -58,7 +59,8 @@ class App extends Component {
           this.setState({updateQty});
         }
     }
-
+  
+  
 render () {
 
   return (
@@ -78,8 +80,6 @@ render () {
   );
 }
 }
-
-
 
 export default App;
 

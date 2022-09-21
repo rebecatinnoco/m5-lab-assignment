@@ -1,12 +1,11 @@
 import './App.css';
-import App from './App';
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { products } from './products';
+// import { products } from './products';
 import { Modal } from "react-bootstrap";
 import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import HandleIncrement from "./Button";
+
 
 export default function Display (props) {
   const [show, setShow] = useState(false);
